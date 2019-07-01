@@ -1,0 +1,103 @@
+{
+  "data": [
+    {
+      "id": 100001,
+      "name": "Night and Day",
+      "image": "https://picsum.photos/id/69/200/300?grayscale",
+      "dateOfEvent": "10/07/2019",
+      "totalSeats": 90,
+      "availableSeats": 50,
+      "isBooking": true
+    },
+    {
+      "id": 27362783,
+      "name": "Discover You",
+      "image": "https://picsum.photos/id/819/200/300",
+      "dateOfEvent": "10/07/2019",
+      "totalSeats": 100,
+      "availableSeats": 0,
+      "isBooking": false
+    },
+    {
+      "id": 1243556,
+      "name": "Wild Life at 1",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "11/09/2019",
+      "totalSeats": 120,
+      "availableSeats": 20,
+      "isBooking": true
+    },
+    {
+      "id": 343434,
+      "name": "9 Club",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "02/10/201",
+      "totalSeats": 50,
+      "availableSeats": 50,
+      "isBooking": true
+    },
+    {
+      "id": 5,
+      "name": "EDM : Rock",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "02/10/2019",
+      "totalSeats": 200,
+      "availableSeats": 0,
+      "isBooking": false
+    },
+    {
+      "id": 6,
+      "name": "Art in Vision",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "11/09/2019",
+      "totalSeats": 100,
+      "availableSeats": 80,
+      "isBooking": true
+    },
+    {
+      "id": 7,
+      "name": "Travel anywhere",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "11/09/2019",
+      "totalSeats": 30,
+      "availableSeats": 5,
+      "isBooking": true
+    },
+    {
+      "id": 8,
+      "name": "Sky High",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "09/09/2019",
+      "totalSeats": 20,
+      "availableSeats": 2,
+      "isBooking": true
+    },
+    {
+      "id": 9,
+      "name": "Photo Story",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "17/08/2019",
+      "totalSeats": 100,
+      "availableSeats": 20,
+      "isBooking": true
+    },
+    {
+      "id": 10,
+      "name": "Drama",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "27/08/2019",
+      "totalSeats": 100,
+      "availableSeats": 0,
+      "isBooking": false
+    },
+    {
+      "id": 11,
+      "name": "ReConnect",
+      "image": "https://picsum.photos/200/300",
+      "dateOfEvent": "01/08/2019",
+      "totalSeats": 20,
+      "availableSeats": 20,
+      "isBooking": true
+    }
+  ]
+}

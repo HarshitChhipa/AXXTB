@@ -1,0 +1,33 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand">Event Listing</span>
+</nav>
+<div class="searchBar container py-4">
+  <input class="w-100" type="text" matInput placeholder="SEARCH EVENTS" autocomplete="off"
+         (keyup)="searchEvent($event.target.value);"/>
+</div>
+<div class="no-result container text-center" *ngIf="eventList.length === 0">
+  <h5 class="text-secondary">No results found!</h5>
+</div>
+
+
+<div class="listing-block container d-flex flex-wrap" *ngIf="eventList.length != 0">
+  <div class="col-md-4 col-lg-3 col-sm-12 mb-4" *ngFor="let event of eventList">
+    <mat-card class="event-card">
+      <mat-card-header>
+        <mat-card-title>{{ event?.name }}</mat-card-title>
+        <mat-card-subtitle>Event Date : {{ event?.dateOfEvent }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="event?.image" [alt]="event?.name">
+      <mat-card-content class="m-0">
+        <div class="py-2">
+          <div>Available Seats : {{ event?.availableSeats ? event?.availableSeats : 0 }}</div>
+          <div>Total Seats : {{ event?.totalSeats }}</div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" *ngIf="event?.isBooking" [routerLink]="[event?.id]">Book Now</button>
+        <button mat-button disabled *ngIf=" !event?.isBooking">Sold Out</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

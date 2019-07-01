@@ -1,0 +1,73 @@
+<nav class="navbar navbar-light bg-light d-flex flex-column text-left">
+  <div class="navbar-brand w-100">Event : {{ eventDetail?.name }}</div>
+  <div class="w-100">Number of available seats
+    : {{ eventDetail?.availableSeats ? eventDetail?.availableSeats : 0 }} </div>
+</nav>
+
+<div class="w-100 text-center py-2" [hidden]="!bookingStatus">
+  <h3 class="text-success">Tickets booked</h3>
+</div>
+
+<div class="container">
+  <div class="col-md-6 mx-auto pt-2">
+    <form class="w-100 d-flex flex-column" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width py-2">
+        <input matInput placeholder="User Name" formControlName="name">
+        <mat-error *ngIf="bookingForm.get('name').hasError('required')">
+          Please enter your name.
+        </mat-error>
+        <mat-error *ngIf="bookingForm.get('name').hasError('pattern')">
+          Only letters and spaces are allowed.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width py-2">
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="bookingForm.get('email').hasError('required')">
+          Please enter your email
+        </mat-error>
+        <mat-error *ngIf="bookingForm.get('email').hasError('email')">
+          Invalid email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width py-2">
+        <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+        <mat-error
+          *ngIf="bookingForm.get('phoneNumber').hasError('minlength') || bookingForm.get('phoneNumber').hasError('maxlength')">
+          Please enter 10 digit phone number
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width py-2">
+        <mat-label>Number Of Seats</mat-label>
+        <mat-select formControlName="numberOfSeats" (selectionChange)="setForm($event)">
+          <mat-option *ngFor="let i of [1,2,3,4,5,6]" [value]="i">
+            {{i}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="bookingForm.get('numberOfSeats').hasError('required')">
+          Please enter number of seats
+        </mat-error>
+        <mat-error *ngIf="bookingForm.get('numberOfSeats').hasError('validatorSeatSelection')">
+          Number of seats selected is more than available seats
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width py-2" formArrayName="attendees"
+                      *ngFor="let arrayItem of attendeesArray.controls; let i=index">
+        <input matInput placeholder="Name of Attendee {{ i + 1}}" [formControlName]="i">
+        <mat-error *ngIf="arrayItem.hasError('required')">
+          Please enter the name of Attendee {{  i + 1 }}
+        </mat-error>
+      </mat-form-field>
+
+      <div class="d-flex justify-content-between py-4">
+        <button mat-button color="primary" type="submit" [disabled]="bookingStatus">Submit</button>
+        <button mat-button color="warn" type="button" [disabled]="bookingStatus"
+                [routerLink]='[]'>Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
