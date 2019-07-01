@@ -23,6 +23,9 @@ export class EventListingComponent implements OnInit {
     });
   }
 
+  /**
+   * Method called when we search for any events.
+   */
   searchEvent(value: string) {
     if (value.length === 0) {
       this.eventList = this.baseResponseModel.data;

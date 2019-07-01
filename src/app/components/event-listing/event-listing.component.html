@@ -2,8 +2,14 @@
   <span class="navbar-brand">Event Listing</span>
 </nav>
 <div class="searchBar container py-4">
-  <input class="w-100" type="text" matInput placeholder="SEARCH EVENTS" autocomplete="off"
-         (keyup)="searchEvent($event.target.value);"/>
+  <div class="form-group">
+    <input class="form-control w-100"
+           type="text"
+           matInput
+           placeholder="SEARCH EVENTS"
+           autocomplete="off"
+           (keyup)="searchEvent($event.target.value)">
+  </div>
 </div>
 <div class="no-result container text-center" *ngIf="eventList.length === 0">
   <h5 class="text-secondary">No results found!</h5>

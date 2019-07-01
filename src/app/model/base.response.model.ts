@@ -1,13 +1,13 @@
-import { EventData } from './event.data.model';
+import {EventData} from './event.data.model';
 
 export class BaseResponseModel {
-    data: EventData[] = [];
+  data: EventData[] = [];
 
-    constructor(data = null) {
-        if (data) {
-            data.forEach(ele => {
-                this.data.push(new EventData(ele));
-            });
-        }
+  constructor(data = null) {
+    if (data) {
+      data.forEach(ele => {
+        this.data.push(new EventData(ele));
+      });
     }
+  }
 }

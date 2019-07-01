@@ -15,7 +15,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class EventBookingComponent implements OnInit {
 
-  private _response: BaseResponseModel;
+  private baseResponseModel: BaseResponseModel;
   eventDetail: EventData;
   eventID: number;
   bookingForm: FormGroup;
@@ -38,10 +38,12 @@ export class EventBookingComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(res => {
       this.eventID = parseInt(res.evId);
-      this.eventBookingService.getEventDetail().subscribe(res => {
-        this._response = new BaseResponseModel(res.data);
-        this.eventDetail = this._response.data.filter(ele => ele.id === this.eventID).pop();
-        this.bookingForm.get('numberOfSeats').setValidators(validatorSeatSelection(this.eventDetail.availableSeats));
+      this.eventBookingService.getEventDetail().subscribe(resp => {
+        if (!!resp) {
+          this.baseResponseModel = new BaseResponseModel(resp.data);
+          this.eventDetail = this.baseResponseModel.data.filter(ele => ele.id === this.eventID).pop();
+          this.bookingForm.get('numberOfSeats').setValidators(validatorSeatSelection(this.eventDetail.availableSeats));
+        }
       });
     });
 
@@ -50,6 +52,11 @@ export class EventBookingComponent implements OnInit {
   get attendeesArray() {
     return this.bookingForm.get('attendees') as FormArray;
   }
+
+  /**
+   * For creating the attendees.
+   * Adding fields dynamically
+   */
 
   setForm(event) {
     this.bookingForm.setControl('attendees', new FormArray([]));
@@ -63,6 +70,10 @@ export class EventBookingComponent implements OnInit {
     }
   }
 
+  /**
+   * Method called when we submit the form.
+   * We can then perform any operation with the data from here onwards.
+   */
 
   onSubmit() {
     if (this.bookingForm.valid) {
@@ -73,6 +84,4 @@ export class EventBookingComponent implements OnInit {
       console.log(this.bookingForm.value);
     }
   }
-
-
 }
